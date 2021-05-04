@@ -44,7 +44,7 @@ window.onload = function() {
   if(amount.value  ==''){
     document.getElementById('link-button').disabled =true;
   }
-  axios.get("http://stripeach.surviivorbet.com/link_token",)
+  axios.get("https://laravel-stripe-ach.herokuapp.com/link_token",)
     .then((response)=>{
         console.log(response);
         linkToken = response.data;
@@ -118,7 +118,7 @@ function kickOff(linkToken) {
 
   function getStripeToken(token, id) { 
     var amount = localStorage.getItem('amount');
-    axios.post("http://stripeach.surviivorbet.com/exchange-tokens", {public_token: token, client_id: id, amount:amount})
+    axios.post("https://laravel-stripe-ach.herokuapp.com/exchange-tokens", {public_token: token, client_id: id, amount:amount})
     .then((response)=>{
       let div = document.getElementById('success');
         div.classList.remove('d-none');
